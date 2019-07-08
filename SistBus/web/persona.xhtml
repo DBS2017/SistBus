@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:form>
+            <p:tabMenu activeIndex="#{param.i}">
+              
+                <p:menuitem value="Persona" outcome="persona.xhtml" >
+                    <f:param name="i" value="0" />
+                </p:menuitem>
+                  <p:menuitem value="Cronograma" outcome="cronograma.xhtml" >
+                    <f:param name="i" value="1" />
+                </p:menuitem>
+                  <p:menuitem value="Buses" outcome="buses.xhtml">
+                    <f:param name="i" value="2" />
+                </p:menuitem>
+            </p:tabMenu>
+        </h:form>
+
+
+
+    </h:head>
+    <h:body>
+        <h:form id="FormPersona">
+            <p:growl autoUpdate="true" life="1000"/>
+            <p:panelGrid  columns="2">
+                <p:outputLabel value="Documento"/>
+                <p:inputText value="#{personaC.persona.TIPDOC}"/>
+                <p:outputLabel value="Nombre"/>
+                <p:inputText value="#{personaC.persona.NOMPER}"/>
+                <p:outputLabel value="Apellido"/>
+                <p:inputText value="#{personaC.persona.APEPER}"/>
+                <p:outputLabel value="Ruta Inicio"/>
+                <p:selectOneMenu value="#{personaC.persona.LUGPROCPER}">
+                    <f:selectItem itemLabel="Seleccione"  itemValue=""/>
+                    <f:selectItem itemLabel="Chincha"  itemValue="Chincha"/>
+                    <f:selectItem itemLabel="Cañete"  itemValue="Cañete"/>
+                </p:selectOneMenu>
+                  <p:outputLabel value="Ruta Final"/>
+                  <p:selectOneMenu value="#{personaC.persona.DESPER}">
+                    <f:selectItem itemLabel="Seleccione"  itemValue=""/>
+                    <f:selectItem itemLabel="Chincha"  itemValue="Chincha"/>
+                    <f:selectItem itemLabel="Cañete"  itemValue="Cañete"/>
+                </p:selectOneMenu>
+                <p:outputLabel value="Direccion"/>
+                <p:autoComplete maxResults="16"
+                                emptyMessage="No se encontro ningun registro"
+                                value="#{personaC.persona.UBIGEO_CODUBI}"
+                                completeMethod="#{personaC.completeTextUbi}"
+                                style="width: 90%" maxlength="15"/>
+                <p:commandButton value="GUARDAR" actionListener="#{personaC.guardarPersona()}" update="FormPersona"/> 
+            </p:panelGrid>
+        </h:form>
+    </h:body>
+</html>
+
