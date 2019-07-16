@@ -5,6 +5,7 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import modelo.RutaM;
@@ -15,7 +16,19 @@ public class RutaC implements Serializable {
 
     private RutaM ruta = new RutaM();
     private List<RutaM> lstRuta;
-
+    private List<RutaM> lstRuta1;
+    
+    
+    @PostConstruct
+    public void inicio(){
+        try {
+            listarRuta();
+        } catch (Exception e) {
+        }
+    }
+    
+    
+    
     public void limpiarRuta() {
         try {
             ruta = new RutaM();
@@ -46,6 +59,16 @@ public class RutaC implements Serializable {
             throw e;
         }
     }
+    public void listarRuta1() throws Exception {
+        RutaD dao;
+        try {
+            dao = new RutaD();
+            lstRuta = dao.listarRuta1();
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
 
     public RutaM getRuta() {
         return ruta;
@@ -61,6 +84,14 @@ public class RutaC implements Serializable {
 
     public void setLstRuta(List<RutaM> lstRuta) {
         this.lstRuta = lstRuta;
+    }
+
+    public List<RutaM> getLstRuta1() {
+        return lstRuta1;
+    }
+
+    public void setLstRuta1(List<RutaM> lstRuta1) {
+        this.lstRuta1 = lstRuta1;
     }
 
 }

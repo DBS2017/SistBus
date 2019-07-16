@@ -6,6 +6,7 @@ import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import modelo.PersonaM;
@@ -15,6 +16,10 @@ import modelo.PersonaM;
 public class PersonaC implements Serializable {
 
     private PersonaM persona = new PersonaM();
+    
+    
+  
+    
     
     
     public void limpiarPersona()throws Exception{

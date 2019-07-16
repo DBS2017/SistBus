@@ -65,4 +65,30 @@ public class RutaD  extends Dao implements RutaI{
         }
         return listarRuta;         
     }
+    
+    
+      public List<RutaM> listarRuta1() throws Exception {
+        List<RutaM> listarRuta;
+        ResultSet rs;
+        try {
+            this.conectar();
+            String sql="SELECT * FROM RUTA";
+            PreparedStatement ps=this.getCn().prepareStatement(sql);
+            rs=ps.executeQuery();
+            listarRuta = new ArrayList();
+            RutaM ruta;
+            while(rs.next()){
+                ruta = new RutaM();
+                ruta.setCODRUT(rs.getString("CODRUT"));
+                ruta.setNOMRUT(rs.getString("NOMRUT"));
+                listarRuta.add(ruta);
+            }
+            
+        } catch (SQLException e) {
+            throw  e;
+        }finally{
+            this.cerrar();
+        }
+        return listarRuta;         
+    }
 }

@@ -8,14 +8,14 @@
         <title>Facelet Title</title>
         <h:form>
             <p:tabMenu activeIndex="#{param.i}">
-              
+
                 <p:menuitem value="Persona" outcome="persona.xhtml" >
                     <f:param name="i" value="0" />
                 </p:menuitem>
-                  <p:menuitem value="Cronograma" outcome="cronograma.xhtml" >
+                <p:menuitem value="Cronograma" outcome="cronograma.xhtml" >
                     <f:param name="i" value="1" />
                 </p:menuitem>
-                  <p:menuitem value="Buses" outcome="buses.xhtml">
+                <p:menuitem value="Buses" outcome="buses.xhtml">
                     <f:param name="i" value="2" />
                 </p:menuitem>
             </p:tabMenu>
@@ -34,17 +34,10 @@
                 <p:inputText value="#{personaC.persona.NOMPER}"/>
                 <p:outputLabel value="Apellido"/>
                 <p:inputText value="#{personaC.persona.APEPER}"/>
-                <p:outputLabel value="Ruta Inicio"/>
-                <p:selectOneMenu value="#{personaC.persona.LUGPROCPER}">
-                    <f:selectItem itemLabel="Seleccione"  itemValue=""/>
-                    <f:selectItem itemLabel="Chincha"  itemValue="Chincha"/>
-                    <f:selectItem itemLabel="Cañete"  itemValue="Cañete"/>
-                </p:selectOneMenu>
-                  <p:outputLabel value="Ruta Final"/>
-                  <p:selectOneMenu value="#{personaC.persona.DESPER}">
-                    <f:selectItem itemLabel="Seleccione"  itemValue=""/>
-                    <f:selectItem itemLabel="Chincha"  itemValue="Chincha"/>
-                    <f:selectItem itemLabel="Cañete"  itemValue="Cañete"/>
+                <p:outputLabel value="RUTA"/>
+                <p:selectOneMenu value="#{personaC.persona.RUTA_CODPER}">
+                    <f:selectItem noSelectionOption="true" itemLabel="Seleccione" itemValue="#{null}"/>
+                    <f:selectItems value="#{rutaC.lstRuta1}" var="rutaa" itemLabel="#{rutaa.NOMRUT}"  itemValue="#{rutaa.CODRUT}" />
                 </p:selectOneMenu>
                 <p:outputLabel value="Direccion"/>
                 <p:autoComplete maxResults="16"

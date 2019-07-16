@@ -13,16 +13,17 @@ public class PersonaD extends Dao implements interfaces.PersonaI {
     public void guardarPersona(PersonaM persona) throws Exception {
         try {
             this.conectar();
-            String sql = "INSERT INTO PERSONA (NOMPER,APEPER,TIPPER,TIPDOC,LUGPROCPER,DESPER,UBIGEO_CODUBI,BUSES_CODBUS) VALUES (?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO PERSONA (NOMPER,APEPER,TIPPER,TIPDOC,UBIGEO_CODUBI,RUTA_CODPER,BUSES_CODBUS) VALUES (?,?,?,?,?,?,?)";
             PreparedStatement ps = this.getCn().prepareStatement(sql);
             ps.setString(1, persona.getNOMPER()); //OK
             ps.setString(2, persona.getAPEPER()); //OK
             ps.setString(3, "C"); // C -> TIPO DE PERSONA CLIENTEN = C
             ps.setString(4, persona.getTIPDOC());//OK
-            ps.setString(5, persona.getLUGPROCPER());
-            ps.setString(6, persona.getDESPER());
-            ps.setString(7, persona.getUBIGEO_CODUBI()); // OK
-            ps.setString(8, "1");
+//            ps.setString(5, persona.getLUGPROCPER());
+//            ps.setString(6, persona.getDESPER());
+            ps.setString(5, persona.getUBIGEO_CODUBI()); // OK
+            ps.setString(6, persona.getRUTA_CODPER());
+            ps.setString(7, "1");
             ps.executeUpdate();
         } catch (SQLException e) {
             throw e;

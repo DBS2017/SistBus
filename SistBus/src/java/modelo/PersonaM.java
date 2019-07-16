@@ -3,7 +3,7 @@ package modelo;
 
 
 public class PersonaM {
-    private String CODPER,NOMPER,APEPER,TIPPER,TIPDOC,LUGPROCPER,DESPER,UBIGEO_CODUBI,BUSES_CODBUS;
+    private String CODPER,NOMPER,APEPER,TIPPER,TIPDOC,LUGPROCPER,DESPER,UBIGEO_CODUBI,BUSES_CODBUS,RUTA_CODPER;
 
     public String getCODPER() {
         return CODPER;
@@ -76,5 +76,14 @@ public class PersonaM {
     public void setBUSES_CODBUS(String BUSES_CODBUS) {
         this.BUSES_CODBUS = BUSES_CODBUS;
     }
+
+    public String getRUTA_CODPER() {
+        return RUTA_CODPER;
+    }
+
+    public void setRUTA_CODPER(String RUTA_CODPER) {
+        this.RUTA_CODPER = RUTA_CODPER;
+    }
+    
     
 }
